@@ -99,7 +99,7 @@ deauth() ->
 
 reset_password() ->
     User = ec_talk:ask_default("Username or Email:", string, ""),
-	rebar3_hex_http:post_map(filename:join([?ENDPOINT, User, "reset"]), [], []).
+    rebar3_hex_http:post_map(filename:join([?ENDPOINT, User, "reset"]), [], []).
 
 %% Internal functions
 
@@ -166,5 +166,5 @@ new_key(Name, Username, Password) ->
     rebar3_hex_http:post_map("keys", "Basic "++Auth, maps:from_list([{<<"name">>, Name}])).
 
 update_config(Username, Body)->
-	Secret = maps:get(<<"secret">>, Body),
+    Secret = maps:get(<<"secret">>, Body),
     rebar3_hex_config:update([{username, Username}, {key, Secret}]).
